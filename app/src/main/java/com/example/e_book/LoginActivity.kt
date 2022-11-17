@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.e_book.databinding.ActivityLoginBinding
 import com.example.e_book.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -37,6 +38,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.noAccountTv.setOnClickListener {
             startActivity(Intent(this,RegisterActivity::class.java))
+            Animatoo.animateSlideLeft(this@LoginActivity)
         }
 
         binding.loginBtn.setOnClickListener {
@@ -94,11 +96,13 @@ class LoginActivity : AppCompatActivity() {
 
                     if (userType == "user"){
                         startActivity(Intent(this@LoginActivity,DashBoardUserActivity::class.java))
+                        Animatoo.animateFade(this@LoginActivity)
                         finish()
                     }
 
                     else if (userType == "admin"){
                         startActivity(Intent(this@LoginActivity,DashBoardAdminActivity::class.java))
+                        Animatoo.animateFade(this@LoginActivity)
                         finish()
                     }
                 }
@@ -107,5 +111,11 @@ class LoginActivity : AppCompatActivity() {
                     progressDialog.dismiss()
                 }
             })
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+        Animatoo.animateSlideRight(this)
     }
 }

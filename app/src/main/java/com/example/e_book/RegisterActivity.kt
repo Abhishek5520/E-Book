@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.e_book.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -33,6 +34,7 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.backBtn.setOnClickListener {
             onBackPressed()
+            Animatoo.animateSlideRight(this)
         }
 
         binding.registerBtn.setOnClickListener {
@@ -92,6 +94,12 @@ class RegisterActivity : AppCompatActivity() {
             }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+        Animatoo.animateSlideRight(this)
+    }
+
     private fun updateUserInfo() {
         progressDialog.setMessage("Saving user info...")
 
@@ -114,6 +122,7 @@ class RegisterActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(this,"Account created...",Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this@RegisterActivity,DashBoardUserActivity::class.java))
+                Animatoo.animateFade(this@RegisterActivity)
                 finish()
             }
             .addOnFailureListener { e->

@@ -29,6 +29,7 @@ class SplashActivity : AppCompatActivity() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser == null){
             startActivity(Intent(this,MainActivity::class.java))
+            Animatoo.animateFade(this@SplashActivity)
             finish()
         }
         else{
@@ -41,11 +42,13 @@ class SplashActivity : AppCompatActivity() {
 
                         if (userType == "user"){
                             startActivity(Intent(this@SplashActivity,DashBoardUserActivity::class.java))
+                            Animatoo.animateFade(this@SplashActivity)
                             finish()
                         }
 
                         else if (userType == "admin"){
                             startActivity(Intent(this@SplashActivity,DashBoardAdminActivity::class.java))
+                            Animatoo.animateFade(this@SplashActivity)
                             finish()
                         }
                     }
