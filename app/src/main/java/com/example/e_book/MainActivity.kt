@@ -22,12 +22,14 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(Intent(this,LoginActivity::class.java))
             Animatoo.animateSlideLeft(this)
+            finish()
         }
 
         binding.btn2.setOnClickListener {
 
             startActivity(Intent(this,DashBoardUserActivity::class.java))
             Animatoo.animateFade(this)
+            finish()
         }
 
     }

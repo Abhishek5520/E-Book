@@ -81,6 +81,7 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
+
     private fun checkUser() {
         progressDialog.setMessage("Checking User...")
 
@@ -115,7 +116,9 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finish()
+        startActivity(Intent(this,MainActivity::class.java))
         Animatoo.animateSlideRight(this)
+        finish()
+
     }
 }

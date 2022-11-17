@@ -3,6 +3,7 @@ package com.example.e_book
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.e_book.databinding.ActivityDashBoardUserBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -35,5 +36,19 @@ class DashBoardUserActivity : AppCompatActivity() {
             val email = firebaseUser.email
             binding.subTitleTv.text = email
         }
+    }
+
+    override fun onBackPressed() {
+        val firebaseUser = firebaseAuth.currentUser
+        super.onBackPressed()
+        if(firebaseUser == null){
+            startActivity(Intent(this,MainActivity::class.java))
+            Animatoo.animateSlideRight(this)
+            finish()
+        }
+        else{
+            finish()
+        }
+
     }
 }
