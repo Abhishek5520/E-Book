@@ -13,10 +13,11 @@
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/edt_sh2.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/edt_sh3.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.1" />
-        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_dash_board_admin.xml" value="0.176" />
+        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_category_add.xml" value="0.2" />
+        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_dash_board_admin.xml" value="0.2" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_dash_board_user.xml" value="0.2" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_login.xml" value="0.2" />
-        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_splash.xml" value="0.1" />
       </map>

@@ -3,6 +3,7 @@ package com.example.e_book
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.e_book.databinding.ActivityDashBoardAdminBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -23,12 +24,18 @@ class DashBoardAdminActivity : AppCompatActivity() {
             firebaseAuth.signOut()
             checkUser()
         }
+
+        binding.addCategoryBtn.setOnClickListener {
+            startActivity(Intent(this, CategoryAddActivity::class.java))
+            Animatoo.animateSlideLeft(this)
+        }
     }
 
     private fun checkUser() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser == null){
             startActivity(Intent(this,MainActivity::class.java))
+            Animatoo.animateSlideRight(this)
             finish()
         }
         else{

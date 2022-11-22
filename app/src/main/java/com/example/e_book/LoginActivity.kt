@@ -33,12 +33,13 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Please Wait")
+        progressDialog.setTitle("Please Wait...")
         progressDialog.setCanceledOnTouchOutside(false)
 
         binding.noAccountTv.setOnClickListener {
             startActivity(Intent(this,RegisterActivity::class.java))
             Animatoo.animateSlideLeft(this@LoginActivity)
+            finish()
         }
 
         binding.loginBtn.setOnClickListener {

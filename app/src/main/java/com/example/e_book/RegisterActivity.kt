@@ -29,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
 
         progressDialog = ProgressDialog(this)
-        progressDialog.setTitle("Please Wait")
+        progressDialog.setTitle("Please Wait...")
         progressDialog.setCanceledOnTouchOutside(false)
 
         binding.backBtn.setOnClickListener {
@@ -96,8 +96,10 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finish()
+        startActivity(Intent(this,LoginActivity::class.java))
         Animatoo.animateSlideRight(this)
+        finish()
+
     }
 
     private fun updateUserInfo() {
