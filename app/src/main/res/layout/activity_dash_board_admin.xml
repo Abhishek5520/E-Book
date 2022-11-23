@@ -43,6 +43,31 @@
             android:src="@drawable/ic_logout_white" />
     </RelativeLayout>
 
+    <EditText
+        android:id="@+id/searchEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbarRl"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/white"
+        android:padding="10dp"
+        android:hint="Search"
+        android:drawablePadding="10dp"
+        android:textColorHint="@color/gray1"
+        android:drawableStart="@drawable/ic_search_gray"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoriesRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/searchEt"
+        android:layout_above="@id/bottomLl"
+        tools:listitem="@layout/row_category"
+        android:layout_margin="5dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
     <LinearLayout
         android:id="@+id/bottomLl"
         android:layout_width="match_parent"

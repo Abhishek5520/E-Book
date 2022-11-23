@@ -6,6 +6,7 @@
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/bn_select.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/bn_sh2.xml" value="0.2545" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/bn_sh2_pressed.xml" value="0.1" />
+        <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/bn_sh_4.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/btn_select.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/btn_sh.xml" value="0.213" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/btn_sh_pressed.xml" value="0.1" />
@@ -20,6 +21,7 @@
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/row_category.xml" value="0.2" />
       </map>
     </option>
   </component>
