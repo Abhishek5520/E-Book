@@ -61,6 +61,11 @@ class DashBoardAdminActivity : AppCompatActivity() {
             startActivity(Intent(this, CategoryAddActivity::class.java))
             Animatoo.animateSlideLeft(this)
         }
+
+        binding.addPdfFab.setOnClickListener {
+            startActivity(Intent(this, PdfAddActivity::class.java))
+            Animatoo.animateSlideLeft(this)
+        }
     }
 
     private fun loadCategories() {
