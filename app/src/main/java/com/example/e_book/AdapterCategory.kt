@@ -2,11 +2,13 @@ package com.example.e_book
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.e_book.databinding.RowCategoryBinding
 import com.google.firebase.database.FirebaseDatabase
 
@@ -55,6 +57,14 @@ class AdapterCategory : RecyclerView.Adapter<AdapterCategory.HolderCategory>, Fi
                     a.dismiss()
                 }
                 .show()
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context, PdfListAdminActivity::class.java)
+            intent.putExtra("categoryId", id)
+            intent.putExtra("category", category)
+            context.startActivity(intent)
+            Animatoo.animateSlideLeft(context)
         }
     }
 
