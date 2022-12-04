@@ -18,15 +18,15 @@ class FilterPdfAdmin: Filter {
         val results = FilterResults()
         if (constraint != null && constraint.isNotEmpty()){
             constraint = constraint.toString().lowercase()
-            val filterModels = ArrayList<ModelPdf>()
+            var filteredModels = ArrayList<ModelPdf>()
             for (i in filterList.indices){
 
                 if (filterList[i].title.lowercase().contains(constraint)){
-                    filterModels.add(filterList[i])
+                    filteredModels.add(filterList[i])
                 }
             }
-            results.count = filterModels.size
-            results.values = filterModels
+            results.count = filteredModels.size
+            results.values = filteredModels
         }
         else{
             results.count = filterList.size
@@ -36,7 +36,9 @@ class FilterPdfAdmin: Filter {
         return results
     }
 
-    override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-        adapterPdfAdmin.pdfArrayList = results!!.values as ArrayList<ModelPdf> /* = java.util.ArrayList<com.example.e_book.ModelPdf> */
+    override fun publishResults(constraint: CharSequence?, results: FilterResults) {
+        adapterPdfAdmin.pdfArrayList = results.values as ArrayList<ModelPdf>/* = java.util.ArrayList<com.example.e_book.ModelPdf> */
+
+        adapterPdfAdmin.notifyDataSetChanged()
     }
 }

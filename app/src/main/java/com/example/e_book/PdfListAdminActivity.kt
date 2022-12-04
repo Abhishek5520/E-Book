@@ -42,19 +42,16 @@ class PdfListAdminActivity : AppCompatActivity() {
 
         loadPdfList()
 
-        binding.backBtn.setOnClickListener {
-            onBackPressed()
-        }
 
         binding.searchEt.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
                 try {
-                    adapterPdfAdmin.filter!!.filter(s)
+                    adapterPdfAdmin.filter.filter(s)
                 }
                 catch (e: Exception){
                     Log.d(TAG, "onTextChanged: ${e.message}")
@@ -62,9 +59,13 @@ class PdfListAdminActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                TODO("Not yet implemented")
+
             }
         })
+
+        binding.backBtn.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun loadPdfList() {

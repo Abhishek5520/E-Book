@@ -1,6 +1,8 @@
 package com.example.e_book
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +20,7 @@ class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fi
 
     private lateinit var binding: RoePdfAdminBinding
 
-    var filter : FilterPdfAdmin? = null
+    private var filter : FilterPdfAdmin? = null
 
     constructor(context: Context, pdfArrayList: ArrayList<ModelPdf>) : super() {
         this.context = context
@@ -58,6 +60,33 @@ class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fi
         MyApplication.loadPdfFromUrlSinglePage(pdfUrl,title,holder.pdfView,holder.progressBar,null)
 
         MyApplication.loadPdfSize(pdfUrl,title,holder.sizeTv)
+
+        holder.moreBtn.setOnClickListener {
+            moreOptionsDialog(model, holder)
+        }
+    }
+
+    private fun moreOptionsDialog(model: ModelPdf, holder: AdapterPdfAdmin.HolderPdfAdmin) {
+        val bookId = model.id
+        val bookUrl = model.url
+        val bookTitle = model.title
+
+        val options = arrayOf("Edit", "Delete")
+
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle("Choose Option")
+            .setItems(options){dialog, position->
+                if (position == 0){
+                    val intent = Intent(context, PdfEditActivity::class.java)
+                    intent.putExtra("bookId", bookId)
+                    context.startActivity(intent)
+                }
+                else if (position == 1){
+                    MyApplication.deleteBook(context, bookId, bookUrl, bookTitle)
+                }
+
+            }
+            .show()
     }
 
     override fun getItemCount(): Int {
