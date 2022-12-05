@@ -42,6 +42,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginTop="230dp"
+        android:layout_marginBottom="60dp"
         >
 
         <RelativeLayout
@@ -127,6 +128,8 @@
         android:id="@+id/noAccountTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/scrollView2"
         android:padding="15dp"
         android:text="@string/new_user_signup"
         android:textColor="@color/gray2"
