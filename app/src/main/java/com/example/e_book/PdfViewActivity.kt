@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.example.e_book.databinding.ActivityPdfViewBinding
+import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -64,7 +65,11 @@ class PdfViewActivity : AppCompatActivity() {
                 Log.d(TAG, "loadBookFromUrl: pdf got from url")
 
                 binding.pdfView.fromBytes(bytes)
-                    .swipeHorizontal(false) //set false to scroll vertical, set true scroll horizontal
+                    .swipeHorizontal(true)//set false to scroll vertical, set true scroll horizontal
+                    .pageSnap(true)
+                    .autoSpacing(true)
+                    .pageFling(true)
+                    .scrollHandle(DefaultScrollHandle(this))
                     .onPageChange {page, pageCount ->
                         val currentPage = page+1
                         binding.toolbarSubtitleTv.text = "$currentPage/$pageCount"
@@ -85,3 +90,4 @@ class PdfViewActivity : AppCompatActivity() {
             }
     }
 }
+
