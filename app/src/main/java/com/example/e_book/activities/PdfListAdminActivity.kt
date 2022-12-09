@@ -1,17 +1,18 @@
-package com.example.e_book
+package com.example.e_book.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.LayoutInflater
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.adapters.AdapterPdfAdmin
 import com.example.e_book.databinding.ActivityPdfListAdminBinding
+import com.example.e_book.models.ModelPdf
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.getValue
 import java.lang.Exception
 
 class PdfListAdminActivity : AppCompatActivity() {
@@ -66,6 +67,12 @@ class PdfListAdminActivity : AppCompatActivity() {
         binding.backBtn.setOnClickListener {
             onBackPressed()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Animatoo.animateSlideRight(this)
+        finish()
     }
 
     private fun loadPdfList() {

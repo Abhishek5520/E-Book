@@ -1,7 +1,5 @@
-package com.example.e_book
+package com.example.e_book.activities
 
-import android.app.ActionBar
-import android.app.DownloadManager
 import android.app.ProgressDialog
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -9,11 +7,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
-import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.Constants
+import com.example.e_book.MyApplication
+import com.example.e_book.R
 import com.example.e_book.databinding.ActivityPdfDetailBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -23,7 +23,6 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.rajat.pdfviewer.PdfViewerActivity
 import java.io.FileOutputStream
-import java.util.jar.Manifest
 
 class PdfDetailActivity : AppCompatActivity() {
 
@@ -126,13 +125,15 @@ class PdfDetailActivity : AppCompatActivity() {
                     if (isInMyFavorite){
                         Log.d(TAG, "onDataChange: available in favorite")
 
-                        binding.favoriteBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(0,R.drawable.ic_favorite_filled_white,0,0)
+                        binding.favoriteBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(0,
+                            R.drawable.ic_favorite_filled_white,0,0)
                         binding.favoriteBtn.text = "Remove Favorite"
                     }
                     else{
                         Log.d(TAG, "onDataChange: not available in favorite")
 
-                        binding.favoriteBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(0,R.drawable.ic_favorite_white,0,0)
+                        binding.favoriteBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(0,
+                            R.drawable.ic_favorite_white,0,0)
                         binding.favoriteBtn.text = "Add Favorite"
                     }
                 }
@@ -303,9 +304,15 @@ class PdfDetailActivity : AppCompatActivity() {
 
                     MyApplication.loadCategory(categoryId, binding.categoryTv)
 
-                    MyApplication.loadPdfSize("$bookUrl","$bookTitle",binding.sizeTv)
+                    MyApplication.loadPdfSize("$bookUrl", "$bookTitle", binding.sizeTv)
 
-                    MyApplication.loadPdfFromUrlSinglePage("$bookUrl","$bookTitle",binding.pdfView,binding.progressBar,binding.pagesTv)
+                    MyApplication.loadPdfFromUrlSinglePage(
+                        "$bookUrl",
+                        "$bookTitle",
+                        binding.pdfView,
+                        binding.progressBar,
+                        binding.pagesTv
+                    )
 
                     binding.titleTv.text = bookTitle
                     binding.descriptionTv.text = description

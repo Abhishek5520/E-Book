@@ -1,4 +1,4 @@
-package com.example.e_book
+package com.example.e_book.activities
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -7,8 +7,8 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.R
 import com.example.e_book.databinding.ActivityLoginBinding
-import com.example.e_book.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
         progressDialog.setCanceledOnTouchOutside(false)
 
         binding.noAccountTv.setOnClickListener {
-            startActivity(Intent(this,RegisterActivity::class.java))
+            startActivity(Intent(this, RegisterActivity::class.java))
             Animatoo.animateSlideLeft(this@LoginActivity)
             finish()
         }
@@ -97,13 +97,13 @@ class LoginActivity : AppCompatActivity() {
                     val userType = snapshot.child("userType").value
 
                     if (userType == "user"){
-                        startActivity(Intent(this@LoginActivity,DashBoardUserActivity::class.java))
+                        startActivity(Intent(this@LoginActivity, DashBoardUserActivity::class.java))
                         Animatoo.animateFade(this@LoginActivity)
                         finish()
                     }
 
                     else if (userType == "admin"){
-                        startActivity(Intent(this@LoginActivity,DashBoardAdminActivity::class.java))
+                        startActivity(Intent(this@LoginActivity, DashBoardAdminActivity::class.java))
                         Animatoo.animateFade(this@LoginActivity)
                         finish()
                     }
@@ -117,7 +117,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(Intent(this,MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
         Animatoo.animateSlideRight(this)
         finish()
     }

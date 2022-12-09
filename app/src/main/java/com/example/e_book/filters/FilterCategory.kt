@@ -1,7 +1,8 @@
-package com.example.e_book
+package com.example.e_book.filters
 
 import android.widget.Filter
-import androidx.constraintlayout.widget.ConstraintSet
+import com.example.e_book.adapters.AdapterCategory
+import com.example.e_book.models.ModelCategory
 
 class FilterCategory: Filter {
 

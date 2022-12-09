@@ -125,6 +125,25 @@ class MyApplication: Application() {
 
         }
 
+        fun deleteCategory(context: Context, categoryId: String){
+
+            val TAG = "DELETE_CATEGORY_TAG"
+
+            Log.d(TAG, "deleteBook: deleting...")
+
+            val ref = FirebaseDatabase.getInstance().getReference("Categories")
+            ref.child(categoryId)
+                .removeValue()
+                .addOnSuccessListener {
+                    Toast.makeText(context,"Successfully deleted...", Toast.LENGTH_SHORT).show()
+                    Log.d(TAG, "deleteBook: Deleted from db too...")
+                }
+                .addOnFailureListener {e ->
+                    Log.d(TAG,"deleteBook: Failed to delete from db due to ${e.message}")
+                    Toast.makeText(context,"Failed to delete due to ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+        }
+
         fun deleteBook(context: Context, bookId: String, bookUrl: String, bookTitle: String){
             
             val TAG = "DELETE_BOOK_TAG"

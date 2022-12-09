@@ -9,7 +9,7 @@
     android:layout_marginEnd="5dp"
     app:cardElevation="0dp"
     android:layout_marginTop="5dp"
-    app:cardBackgroundColor="@color/white">
+    app:cardBackgroundColor="#F9FFF9">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,13 +19,12 @@
 
         <TextView
             android:id="@+id/categoryTv"
-            android:layout_width="0dp"
             android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
             android:text="Category Title"
             android:layout_weight="1"
             android:textColor="@color/black"
-            />
+             android:layout_width="0dp"/>
 
         <ImageButton
             android:id="@+id/deleteBtn"

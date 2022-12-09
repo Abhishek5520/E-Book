@@ -1,4 +1,4 @@
-package com.example.e_book
+package com.example.e_book.activities
 
 import android.app.ProgressDialog
 import android.content.Intent
@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Patterns
 import android.widget.Toast
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.R
 import com.example.e_book.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -96,7 +97,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(Intent(this,LoginActivity::class.java))
+        startActivity(Intent(this, LoginActivity::class.java))
         Animatoo.animateSlideRight(this)
         finish()
 
@@ -123,7 +124,7 @@ class RegisterActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 progressDialog.dismiss()
                 Toast.makeText(this,"Account created...",Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this@RegisterActivity,DashBoardUserActivity::class.java))
+                startActivity(Intent(this@RegisterActivity, DashBoardUserActivity::class.java))
                 Animatoo.animateFade(this@RegisterActivity)
                 finish()
             }

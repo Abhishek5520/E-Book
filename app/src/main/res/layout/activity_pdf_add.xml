@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bc5"
-    tools:context=".PdfAddActivity">
+    tools:context=".activities.PdfAddActivity">
 
     <RelativeLayout
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="@drawable/edt_sh2"
-        />
+        android:background="@drawable/edt_sh2" />
 
     <ImageButton
         android:id="@+id/backBtn"
@@ -46,18 +45,7 @@
         android:textColor="@color/white"
         android:textSize="28sp" />
 
-    <ImageButton
-        android:id="@+id/attachPdfBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@android:color/transparent"
-        android:padding="5dp"
-        android:src="@drawable/ic_attach_white" />
+
 
     <RelativeLayout
         android:id="@+id/midTv"
@@ -124,33 +112,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/descriptionTil"
+            android:layout_centerVertical="true"
             android:layout_marginTop="5dp"
-            android:background="@drawable/edt_sh1"
+            android:background="@drawable/edt_sh"
             android:drawableStart="@drawable/ic_category_gray"
             android:drawableEnd="@drawable/ic_down_gray"
             android:drawablePadding="10dp"
             android:hint="Book Category"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:paddingLeft="15dp"
+            android:paddingTop="10dp"
             android:paddingRight="10dp"
-            android:textColorHint="@color/gray1"
+            android:paddingBottom="10dp"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_centerVertical="true"/>
+            android:textColorHint="@color/gray1"
+            android:textSize="16sp" />
     </RelativeLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/submitBtn"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/midTv"
-        android:layout_marginEnd="30dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:text="Upload"
-        android:background="@drawable/btn_sh"
-        android:textColor="@color/white"/>
+        android:layout_marginEnd="30dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/attachPdfBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/bn_sh4"
+            android:padding="10dp"
+            android:src="@drawable/ic_attach_white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+
+            android:background="@drawable/btn_sh"
+            android:text="Upload"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
 
 
 

@@ -8,7 +8,7 @@
     android:background="@drawable/bc"
     android:paddingRight="30dp"
     android:paddingLeft="30dp"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
   <ImageView
       android:id="@+id/ic2"

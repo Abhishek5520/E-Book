@@ -1,4 +1,4 @@
-package com.example.e_book
+package com.example.e_book.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.adapters.AdapterCategory
 import com.example.e_book.databinding.ActivityDashBoardAdminBinding
+import com.example.e_book.models.ModelCategory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -77,13 +79,15 @@ class DashBoardAdminActivity : AppCompatActivity() {
         categoryArrayList = ArrayList()
 
         val ref  = FirebaseDatabase.getInstance().getReference("Categories")
-        ref.addListenerForSingleValueEvent(object : ValueEventListener{
+        ref.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 categoryArrayList.clear()
                 for (ds in snapshot.children){
                     val model = ds.getValue(ModelCategory::class.java)
+                    if (model != null) {
+                        categoryArrayList.add(model)
+                    }
 
-                    categoryArrayList.add(model!!)
                 }
 
                 adapterCategory = AdapterCategory(this@DashBoardAdminActivity,categoryArrayList)
@@ -99,7 +103,7 @@ class DashBoardAdminActivity : AppCompatActivity() {
     private fun checkUser() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser == null){
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             Animatoo.animateSlideRight(this)
             finish()
         }

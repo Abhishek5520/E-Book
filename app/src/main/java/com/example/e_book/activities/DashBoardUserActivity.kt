@@ -1,16 +1,17 @@
-package com.example.e_book
+package com.example.e_book.activities
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.BooksUserFragment
 import com.example.e_book.databinding.ActivityDashBoardUserBinding
+import com.example.e_book.models.ModelCategory
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -38,7 +39,7 @@ class DashBoardUserActivity : AppCompatActivity() {
 
         binding.logoutBtn.setOnClickListener {
             firebaseAuth.signOut()
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             Animatoo.animateSlideRight(this)
             finish()
         }
@@ -68,8 +69,8 @@ class DashBoardUserActivity : AppCompatActivity() {
                 viewPagerAdapter.addFragment(
                     BooksUserFragment.newInstance(
                         "${modelAll.id}",
-                    "${modelAll.category}",
-                    "${modelAll.uid}"
+                        "${modelAll.category}",
+                        "${modelAll.uid}"
                     ), modelAll.category
                 )
                 viewPagerAdapter.addFragment(
@@ -171,7 +172,7 @@ class DashBoardUserActivity : AppCompatActivity() {
         val firebaseUser = firebaseAuth.currentUser
         super.onBackPressed()
         if(firebaseUser == null){
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             Animatoo.animateSlideRight(this)
             finish()
         }

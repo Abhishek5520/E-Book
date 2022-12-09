@@ -5,13 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bc7"
-    tools:context=".DashBoardAdminActivity">
+    tools:context=".activities.DashBoardAdminActivity">
 
     <RelativeLayout
         android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="@drawable/edt_sh3">
+
+        <ImageButton
+            android:id="@+id/profileBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_person_white" />
 
         <TextView
             android:id="@+id/titleTv"
@@ -51,12 +60,12 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@color/white"
-        android:padding="10dp"
-        android:hint="Search"
+        android:background="#FBFFFB"
+        android:drawableStart="@drawable/ic_search_gray"
         android:drawablePadding="10dp"
-        android:textColorHint="@color/gray1"
-        android:drawableStart="@drawable/ic_search_gray"/>
+        android:hint="Search"
+        android:padding="10dp"
+        android:textColorHint="@color/gray1" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoriesRv"
@@ -95,7 +104,7 @@
             android:id="@+id/addPdfFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:backgroundTint="#2B57C8"
+            app:backgroundTint="#E2725B"
             app:fabCustomSize="50dp"
             android:src="@drawable/ic_pdf_white"
             android:tint="@color/white"/>

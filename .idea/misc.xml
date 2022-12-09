@@ -6,6 +6,7 @@
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/bn_select.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/bn_sh2.xml" value="0.2545" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/bn_sh2_pressed.xml" value="0.1" />
+        <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/bn_sh4.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/bn_sh_4.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/btn_select.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/btn_sh.xml" value="0.213" />
@@ -14,6 +15,7 @@
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/edt_sh1.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/edt_sh2.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/edt_sh3.xml" value="0.1" />
+        <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/ic_attach_white.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/tab_background_selected.xml" value="0.11200000000000002" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/tab_background_unselected.xml" value="0.1" />
@@ -33,7 +35,7 @@
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_splash.xml" value="0.16" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/fragment_books_user.xml" value="0.2" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/roe_pdf_admin.xml" value="0.2" />
-        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/row_category.xml" value="0.2" />
+        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/row_category.xml" value="0.12777777777777777" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/row_pdf_user.xml" value="0.2" />
       </map>
     </option>

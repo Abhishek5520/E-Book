@@ -1,4 +1,4 @@
-package com.example.e_book
+package com.example.e_book.adapters
 
 import android.app.AlertDialog
 import android.content.Context
@@ -10,7 +10,12 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.filters.FilterPdfAdmin
+import com.example.e_book.MyApplication
+import com.example.e_book.activities.PdfDetailActivity
+import com.example.e_book.activities.PdfEditActivity
 import com.example.e_book.databinding.RoePdfAdminBinding
+import com.example.e_book.models.ModelPdf
 
 class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Filterable {
 
@@ -58,9 +63,15 @@ class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fi
 
         MyApplication.loadCategory(categoryId, holder.categoryTv)
 
-        MyApplication.loadPdfSize(pdfUrl,title,holder.sizeTv)
+        MyApplication.loadPdfSize(pdfUrl, title, holder.sizeTv)
 
-        MyApplication.loadPdfFromUrlSinglePage(pdfUrl,title,holder.pdfView,holder.progressBar,null)
+        MyApplication.loadPdfFromUrlSinglePage(
+            pdfUrl,
+            title,
+            holder.pdfView,
+            holder.progressBar,
+            null
+        )
 
         holder.moreBtn.setOnClickListener {
             moreOptionsDialog(model, holder)
@@ -70,10 +81,11 @@ class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fi
             val intent = Intent(context, PdfDetailActivity::class.java)
             intent.putExtra("bookId", pdfId)
             context.startActivity(intent)
+            Animatoo.animateSlideUp(context)
         }
     }
 
-    private fun moreOptionsDialog(model: ModelPdf, holder: AdapterPdfAdmin.HolderPdfAdmin) {
+    private fun moreOptionsDialog(model: ModelPdf, holder: HolderPdfAdmin) {
         val bookId = model.id
         val bookUrl = model.url
         val bookTitle = model.title

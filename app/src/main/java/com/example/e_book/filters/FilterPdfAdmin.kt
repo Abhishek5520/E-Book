@@ -1,29 +1,29 @@
-package com.example.e_book
+package com.example.e_book.filters
 
 import android.widget.Filter
+import com.example.e_book.adapters.AdapterPdfAdmin
+import com.example.e_book.models.ModelPdf
 
-class FilterPdfUser: Filter {
+class FilterPdfAdmin: Filter {
 
     var filterList: ArrayList<ModelPdf>
 
-    var adapterPdfUser: AdapterPdfUser
+    var adapterPdfAdmin: AdapterPdfAdmin
 
-    constructor(filterList: ArrayList<ModelPdf>, adapterPdfUser: AdapterPdfUser) : super() {
+    constructor(filterList: ArrayList<ModelPdf>, adapterPdfAdmin: AdapterPdfAdmin) {
         this.filterList = filterList
-        this.adapterPdfUser = adapterPdfUser
+        this.adapterPdfAdmin = adapterPdfAdmin
     }
-
 
     override fun performFiltering(constraint: CharSequence?): FilterResults {
         var constraint: CharSequence? = constraint
         val results = FilterResults()
-
         if (constraint != null && constraint.isNotEmpty()){
-            constraint = constraint.toString().uppercase()
-            val filteredModels = ArrayList<ModelPdf>()
+            constraint = constraint.toString().lowercase()
+            var filteredModels = ArrayList<ModelPdf>()
             for (i in filterList.indices){
 
-                if (filterList[i].title.uppercase().contains(constraint)){
+                if (filterList[i].title.lowercase().contains(constraint)){
                     filteredModels.add(filterList[i])
                 }
             }
@@ -39,9 +39,8 @@ class FilterPdfUser: Filter {
     }
 
     override fun publishResults(constraint: CharSequence?, results: FilterResults) {
+        adapterPdfAdmin.pdfArrayList = results.values as ArrayList<ModelPdf>/* = java.util.ArrayList<com.example.e_book.models.ModelPdf> */
 
-        adapterPdfUser.pdfArrayList = results.values as ArrayList<ModelPdf>/* = java.util.ArrayList<com.example.e_book.ModelPdf> */
-
-        adapterPdfUser.notifyDataSetChanged()
+        adapterPdfAdmin.notifyDataSetChanged()
     }
 }

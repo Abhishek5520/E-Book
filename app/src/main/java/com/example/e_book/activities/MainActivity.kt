@@ -1,10 +1,10 @@
-package com.example.e_book
+package com.example.e_book.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.R
 import com.example.e_book.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -20,14 +20,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.btn1.setOnClickListener {
 
-            startActivity(Intent(this,LoginActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             Animatoo.animateSlideLeft(this)
             finish()
         }
 
         binding.btn2.setOnClickListener {
 
-            startActivity(Intent(this,DashBoardUserActivity::class.java))
+            startActivity(Intent(this, DashBoardUserActivity::class.java))
             Animatoo.animateFade(this)
             finish()
         }

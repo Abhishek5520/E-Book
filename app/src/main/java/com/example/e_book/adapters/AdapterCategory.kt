@@ -1,4 +1,4 @@
-package com.example.e_book
+package com.example.e_book.adapters
 
 import android.app.AlertDialog
 import android.content.Context
@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.filters.FilterCategory
+import com.example.e_book.models.ModelCategory
+import com.example.e_book.activities.PdfListAdminActivity
 import com.example.e_book.databinding.RowCategoryBinding
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.coroutines.GlobalScope
 
 class AdapterCategory : RecyclerView.Adapter<AdapterCategory.HolderCategory>, Filterable{
 
@@ -44,7 +46,7 @@ class AdapterCategory : RecyclerView.Adapter<AdapterCategory.HolderCategory>, Fi
         val uid = model.uid
         val timestamp = model.timestamp
 
-        holder.category.text = category
+        holder.categoryTv.text = category
 
         holder.deleteBtn.setOnClickListener {
             val builder = AlertDialog.Builder(context)
@@ -90,7 +92,8 @@ class AdapterCategory : RecyclerView.Adapter<AdapterCategory.HolderCategory>, Fi
 
     inner class HolderCategory(itemView: View): RecyclerView.ViewHolder(itemView){
 
-        var category:TextView = binding.categoryTv
+
+        var categoryTv:TextView = binding.categoryTv
         var deleteBtn: ImageButton = binding.deleteBtn
     }
 

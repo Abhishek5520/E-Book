@@ -1,4 +1,4 @@
-package com.example.e_book
+package com.example.e_book.models
 
 class ModelPdf {
 

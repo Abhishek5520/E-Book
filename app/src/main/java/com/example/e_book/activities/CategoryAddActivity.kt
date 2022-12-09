@@ -1,11 +1,11 @@
-package com.example.e_book
+package com.example.e_book.activities
 
 import android.app.ProgressDialog
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.R
 import com.example.e_book.databinding.ActivityCategoryAddBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase

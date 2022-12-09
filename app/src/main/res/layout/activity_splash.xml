@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bc2"
     app:layoutDescription="@xml/activity_splash_scene"
-    tools:context=".SplashActivity">
+    tools:context=".activities.SplashActivity">
 
     <ImageView
         android:id="@+id/ic1"

@@ -1,4 +1,4 @@
-package com.example.e_book
+package com.example.e_book.adapters
 
 import android.content.Context
 import android.content.Intent
@@ -9,7 +9,11 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.filters.FilterPdfUser
+import com.example.e_book.MyApplication
+import com.example.e_book.activities.PdfDetailActivity
 import com.example.e_book.databinding.RowPdfUserBinding
+import com.example.e_book.models.ModelPdf
 
 class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filterable {
 
@@ -54,9 +58,9 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filter
 
         MyApplication.loadCategory(categoryId, holder.categoryTv)
 
-        MyApplication.loadPdfSize(url,title,holder.sizeTv)
+        MyApplication.loadPdfSize(url, title, holder.sizeTv)
 
-        MyApplication.loadPdfFromUrlSinglePage(url,title,holder.pdfView,holder.progressBar,null)
+        MyApplication.loadPdfFromUrlSinglePage(url, title, holder.pdfView, holder.progressBar, null)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, PdfDetailActivity::class.java)

@@ -1,10 +1,11 @@
-package com.example.e_book
+package com.example.e_book.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -28,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
     private fun checkUser() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser == null){
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this, MainActivity::class.java))
             Animatoo.animateFade(this@SplashActivity)
             finish()
         }
@@ -41,13 +42,13 @@ class SplashActivity : AppCompatActivity() {
                         val userType = snapshot.child("userType").value
 
                         if (userType == "user"){
-                            startActivity(Intent(this@SplashActivity,DashBoardUserActivity::class.java))
+                            startActivity(Intent(this@SplashActivity, DashBoardUserActivity::class.java))
                             Animatoo.animateFade(this@SplashActivity)
                             finish()
                         }
 
                         else if (userType == "admin"){
-                            startActivity(Intent(this@SplashActivity,DashBoardAdminActivity::class.java))
+                            startActivity(Intent(this@SplashActivity, DashBoardAdminActivity::class.java))
                             Animatoo.animateFade(this@SplashActivity)
                             finish()
                         }

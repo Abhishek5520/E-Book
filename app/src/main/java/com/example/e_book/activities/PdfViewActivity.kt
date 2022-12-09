@@ -1,11 +1,11 @@
-package com.example.e_book
+package com.example.e_book.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.Constants
 import com.example.e_book.databinding.ActivityPdfViewBinding
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
 import com.google.firebase.database.DataSnapshot
