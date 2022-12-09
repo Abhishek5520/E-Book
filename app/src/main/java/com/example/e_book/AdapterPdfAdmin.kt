@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.e_book.databinding.RoePdfAdminBinding
 
 class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Filterable {
@@ -57,9 +58,9 @@ class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fi
 
         MyApplication.loadCategory(categoryId, holder.categoryTv)
 
-        MyApplication.loadPdfFromUrlSinglePage(pdfUrl,title,holder.pdfView,holder.progressBar,null)
-
         MyApplication.loadPdfSize(pdfUrl,title,holder.sizeTv)
+
+        MyApplication.loadPdfFromUrlSinglePage(pdfUrl,title,holder.pdfView,holder.progressBar,null)
 
         holder.moreBtn.setOnClickListener {
             moreOptionsDialog(model, holder)
@@ -86,9 +87,11 @@ class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fi
                     val intent = Intent(context, PdfEditActivity::class.java)
                     intent.putExtra("bookId", bookId)
                     context.startActivity(intent)
+                    Animatoo.animateSlideLeft(context)
                 }
                 else if (position == 1){
                     MyApplication.deleteBook(context, bookId, bookUrl, bookTitle)
+
                 }
 
             }

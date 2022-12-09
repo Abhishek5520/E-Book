@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.e_book.databinding.RowCategoryBinding
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.coroutines.GlobalScope
 
 class AdapterCategory : RecyclerView.Adapter<AdapterCategory.HolderCategory>, Filterable{
 

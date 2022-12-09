@@ -86,9 +86,10 @@
                     android:layout_height="wrap_content"
                     android:layout_toEndOf="@id/pdfRl"
                     android:ellipsize="end"
+                    android:layout_marginStart="5dp"
                     android:maxLines="1"
-                    android:textStyle="bold"
-                    android:text="Book Title" />
+                    android:text="Book Title"
+                    android:textStyle="bold" />
 
 
                 <TableLayout
@@ -106,6 +107,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="5dp"
                             android:text="Category"
+                            android:layout_marginStart="5dp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -128,6 +130,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
+                            android:layout_marginStart="5dp"
                             android:layout_marginEnd="5dp"
                             android:text="Date" />
 
@@ -152,6 +155,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="5dp"
                             android:textStyle="bold"
+                            android:layout_marginStart="5dp"
                             android:text="Size" />
 
                         <TextView
@@ -173,6 +177,7 @@
                             style="@style/TextAppearance.AppCompat.Caption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
                             android:textStyle="bold"
                             android:layout_marginEnd="5dp"
                             android:text="Views" />
@@ -197,6 +202,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textStyle="bold"
+                            android:layout_marginStart="5dp"
                             android:layout_marginEnd="5dp"
                             android:text="Downloads" />
 
@@ -221,6 +227,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="5dp"
                             android:textStyle="bold"
+                            android:layout_marginStart="5dp"
                             android:text="Pages" />
 
                         <TextView
@@ -257,15 +264,17 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:background="@color/design_default_color_primary"
+        android:background="@android:color/transparent"
         android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/readBookBtn"
             android:layout_width="0dp"
-            android:layout_marginStart="2dp"
+            android:layout_marginStart="5dp"
             android:layout_marginEnd="2dp"
-            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#DC1CC324"
             android:drawableTop="@drawable/ic_book_white"
             android:text="Read"
             android:layout_weight="1"/>
@@ -273,12 +282,27 @@
         <Button
             android:id="@+id/downloadBookBtn"
             android:layout_width="0dp"
+            android:paddingTop="5dp"
             android:layout_marginStart="2dp"
             android:layout_marginEnd="2dp"
             android:drawableTop="@drawable/ic_download_white"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:backgroundTint="#DC1CC324"
             android:layout_weight="1"
             android:text="Download"/>
+
+        <Button
+            android:id="@+id/favoriteBtn"
+            android:layout_width="0dp"
+            android:textSize="9sp"
+            android:paddingTop="5dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="5dp"
+            android:drawableTop="@drawable/ic_favorite_white"
+            android:layout_height="match_parent"
+            android:backgroundTint="#DC1CC324"
+            android:layout_weight="1"
+            android:text="Add Favorite"/>
     </LinearLayout>
 
 

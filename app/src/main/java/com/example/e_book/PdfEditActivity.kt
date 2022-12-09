@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.e_book.databinding.ActivityPdfEditBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -57,6 +58,13 @@ class PdfEditActivity : AppCompatActivity() {
         binding.submitBtn.setOnClickListener {
             validateData()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+        Animatoo.animateSlideRight(this)
+
     }
 
     private fun loadBookInfo() {
@@ -138,6 +146,8 @@ class PdfEditActivity : AppCompatActivity() {
                 Log.d(TAG,"updatePdf: uploaded to db")
                 progressDialog.dismiss()
                 Toast.makeText(this, "Uploaded...", Toast.LENGTH_SHORT).show()
+                finish()
+                Animatoo.animateFade(this)
             }
             .addOnFailureListener {e ->
                 Log.d(TAG,"updatePdf: failed to upload due to ${e.message}")

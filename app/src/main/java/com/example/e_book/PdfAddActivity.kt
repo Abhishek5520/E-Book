@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.e_book.databinding.ActivityPdfAddBinding
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
@@ -63,6 +64,13 @@ class PdfAddActivity : AppCompatActivity() {
         binding.submitBtn.setOnClickListener {
             validateData()
         }
+
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+        Animatoo.animateSlideRight(this)
 
     }
 
@@ -147,6 +155,8 @@ class PdfAddActivity : AppCompatActivity() {
                 progressDialog.dismiss()
                 Toast.makeText(this, "Uploaded...", Toast.LENGTH_SHORT).show()
                 pdfUri = null
+                finish()
+                Animatoo.animateFade(this)
             }
             .addOnFailureListener { e ->
                 Log.d(TAG,"uploadPdfInfoToDb: failed to upload due to ${e.message}")

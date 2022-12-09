@@ -12,6 +12,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class DashBoardAdminActivity : AppCompatActivity() {
@@ -31,7 +33,9 @@ class DashBoardAdminActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         checkUser()
-        loadCategories()
+        runOnUiThread {
+            loadCategories()
+        }
 
         binding.searchEt.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -102,6 +106,32 @@ class DashBoardAdminActivity : AppCompatActivity() {
         else{
             val email = firebaseUser.email
             binding.subTitleTv.text = email
+            val uid = firebaseUser.uid
+
+            val ref = FirebaseDatabase.getInstance().getReference("Users")
+            ref.child(uid)
+                .addListenerForSingleValueEvent(object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val name = snapshot.child("name").value
+                        binding.titleTv.text = name.toString()
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+                })
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        GlobalScope.launch {
+            runOnUiThread {
+                loadCategories()
+            }
+        }
+
+
+
     }
 }

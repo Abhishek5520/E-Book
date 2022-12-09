@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.e_book.databinding.RowPdfUserBinding
 
 class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filterable {
@@ -53,14 +54,15 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filter
 
         MyApplication.loadCategory(categoryId, holder.categoryTv)
 
-        MyApplication.loadPdfFromUrlSinglePage(url,title,holder.pdfView,holder.progressBar,null)
-
         MyApplication.loadPdfSize(url,title,holder.sizeTv)
+
+        MyApplication.loadPdfFromUrlSinglePage(url,title,holder.pdfView,holder.progressBar,null)
 
         holder.itemView.setOnClickListener {
             val intent = Intent(context, PdfDetailActivity::class.java)
             intent.putExtra("bookId", bookId)
             context.startActivity(intent)
+            Animatoo.animateSlideUp(context)
         }
     }
 

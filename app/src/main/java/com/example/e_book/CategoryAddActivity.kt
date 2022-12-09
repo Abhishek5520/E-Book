@@ -1,6 +1,7 @@
 package com.example.e_book
 
 import android.app.ProgressDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -32,12 +33,18 @@ class CategoryAddActivity : AppCompatActivity() {
 
         binding.backBtn.setOnClickListener {
             onBackPressed()
-            Animatoo.animateSlideRight(this)
         }
 
         binding.submitBtn.setOnClickListener {
             validateDate()
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+        Animatoo.animateSlideRight(this)
+
     }
 
     private var category = ""
@@ -70,6 +77,8 @@ class CategoryAddActivity : AppCompatActivity() {
             .addOnSuccessListener {
                 progressDialog.dismiss()
                 Toast.makeText(this,"Added Successfully...",Toast.LENGTH_SHORT).show()
+                finish()
+                Animatoo.animateFade(this)
             }
             .addOnFailureListener { e->
                 progressDialog.dismiss()

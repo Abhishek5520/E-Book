@@ -13,6 +13,7 @@ import android.widget.RelativeLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.e_book.databinding.ActivityPdfDetailBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -20,6 +21,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
+import com.rajat.pdfviewer.PdfViewerActivity
 import java.io.FileOutputStream
 import java.util.jar.Manifest
 
@@ -36,6 +38,8 @@ class PdfDetailActivity : AppCompatActivity() {
     private var bookTitle = ""
     private var bookUrl = ""
 
+    private var isInMyFavorite = false
+
     private lateinit var progressDialog: ProgressDialog
 
     private lateinit var firebaseAuth: FirebaseAuth
@@ -46,6 +50,9 @@ class PdfDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
+        if (firebaseAuth.currentUser != null){
+            checkIsFavorite()
+        }
 
         bookId = intent.getStringExtra("bookId")!!
 
@@ -64,16 +71,33 @@ class PdfDetailActivity : AppCompatActivity() {
             val intent = Intent(this, PdfViewActivity::class.java)
             intent.putExtra("bookId",bookId)
             startActivity(intent)
+            Animatoo.animateSlideLeft(this)
         }
 
         binding.downloadBookBtn.setOnClickListener {
             if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
                 Log.d(TAG, "onCreate: STORAGE PERMISSION is already granted")
                 downloadBook()
+
             }
             else{
                 Log.d(TAG, "onCreate: STORAGE PERMISSION was not granted, Lets request it")
                 requestStoragePermissionLauncher.launch(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+        }
+
+        binding.favoriteBtn.setOnClickListener {
+            if (firebaseAuth.currentUser == null){
+                Toast.makeText(this, "You're not logged in",Toast.LENGTH_SHORT).show()
+            }
+            else{
+                if (isInMyFavorite){
+                    removeFromFavorite()
+                }
+                else{
+                    addToFavorite()
+                }
+                checkIsFavorite()
             }
         }
     }
@@ -90,6 +114,73 @@ class PdfDetailActivity : AppCompatActivity() {
 
     }
 
+    private fun checkIsFavorite(){
+        Log.d(TAG, "checkIsFavorite: Checking if book iss in fav or not")
+
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
+        ref.child(firebaseAuth.uid!!).child("Favorites").child(bookId)
+            .addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    isInMyFavorite = snapshot.exists()
+
+                    if (isInMyFavorite){
+                        Log.d(TAG, "onDataChange: available in favorite")
+
+                        binding.favoriteBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(0,R.drawable.ic_favorite_filled_white,0,0)
+                        binding.favoriteBtn.text = "Remove Favorite"
+                    }
+                    else{
+                        Log.d(TAG, "onDataChange: not available in favorite")
+
+                        binding.favoriteBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(0,R.drawable.ic_favorite_white,0,0)
+                        binding.favoriteBtn.text = "Add Favorite"
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+    }
+
+    private fun addToFavorite(){
+        Log.d(TAG, "addToFavorite: Adding to favorite")
+        val timestamp = System.currentTimeMillis()
+
+        val hashMap = HashMap<String,Any>()
+        hashMap["bookId"] = bookId
+        hashMap["timestamp"] = timestamp
+
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
+        ref.child(firebaseAuth.uid!!).child("Favorites").child(bookId)
+            .setValue(hashMap)
+            .addOnSuccessListener {
+                Log.d(TAG, "addToFavorite: Added to favorite")
+                Toast.makeText(this,"Added to favorite", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e->
+                Log.d(TAG, "addToFavorite: Failed to add to favorite due to ${e.message}")
+                Toast.makeText(this,"Failed to add to favorite due to ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun removeFromFavorite(){
+        Log.d(TAG, "removeFromFavorite: Removing from favorite")
+
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
+        ref.child(firebaseAuth.uid!!).child("Favorites").child(bookId)
+            .removeValue()
+            .addOnSuccessListener {
+                Log.d(TAG, "removeFromFavorite: Removed from favorite")
+                Toast.makeText(this,"Removed from favorite", Toast.LENGTH_SHORT).show()
+            }
+            .addOnFailureListener { e->
+                Log.d(TAG, "removeFromFavorite: Failed to remove from favorite due to ${e.message}")
+                Toast.makeText(this,"Failed to remove from favorite due to ${e.message}", Toast.LENGTH_SHORT).show()
+
+            }
+    }
+
     private fun downloadBook(){
         Log.d(TAG, "downloadBook: Downloading Book")
         progressDialog.setMessage("Downloading Book")
@@ -100,6 +191,16 @@ class PdfDetailActivity : AppCompatActivity() {
             .addOnSuccessListener {bytes ->
                 Log.d(TAG, "downloadBook: Book downloaded...")
                 saveToDownloadFolder(bytes)
+
+                startActivity(PdfViewerActivity.launchPdfFromUrl(           //PdfViewerActivity.Companion.launchPdfFromUrl(..   :: incase of JAVA
+                    this,
+                    "$bookUrl",                                // PDF URL in String format
+                    "$bookTitle",                        // PDF Name/Title in String format
+                    "",                  // If nothing specific, Put "" it will save to Downloads
+                    enableDownload = false                    // This param is true by defualt.
+                )
+                )
+                Animatoo.animateSlideUp(this)
             }
             .addOnFailureListener {e->
                 progressDialog.dismiss()
@@ -172,6 +273,12 @@ class PdfDetailActivity : AppCompatActivity() {
             })
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Animatoo.animateSlideDown(this)
+        finish()
+    }
+
     private fun loadBookDetails() {
 
         val ref = FirebaseDatabase.getInstance().getReference("Books")
@@ -196,9 +303,9 @@ class PdfDetailActivity : AppCompatActivity() {
 
                     MyApplication.loadCategory(categoryId, binding.categoryTv)
 
-                    MyApplication.loadPdfFromUrlSinglePage("$bookUrl","$bookTitle",binding.pdfView,binding.progressBar,binding.pagesTv)
-
                     MyApplication.loadPdfSize("$bookUrl","$bookTitle",binding.sizeTv)
+
+                    MyApplication.loadPdfFromUrlSinglePage("$bookUrl","$bookTitle",binding.pdfView,binding.progressBar,binding.pagesTv)
 
                     binding.titleTv.text = bookTitle
                     binding.descriptionTv.text = description

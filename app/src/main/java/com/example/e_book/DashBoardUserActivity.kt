@@ -149,6 +149,20 @@ class DashBoardUserActivity : AppCompatActivity() {
         }
         else{
             val email = firebaseUser.email
+            val uid = firebaseUser.uid
+
+            val ref = FirebaseDatabase.getInstance().getReference("Users")
+            ref.child(uid)
+                .addListenerForSingleValueEvent(object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        val name = snapshot.child("name").value
+                        binding.titleTv.text = name.toString()
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+
+                    }
+                })
             binding.subTitleTv.text = email
         }
     }

@@ -6,7 +6,7 @@
     app:cardElevation="0dp"
     app:contentPadding="5dp"
     android:layout_width="match_parent"
-    android:layout_height="140dp">
+    android:layout_height="150dp">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -1,9 +1,11 @@
 package com.example.e_book
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.example.e_book.databinding.ActivityPdfViewBinding
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
 import com.google.firebase.database.DataSnapshot
@@ -56,6 +58,12 @@ class PdfViewActivity : AppCompatActivity() {
             })
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Animatoo.animateSlideRight(this)
+        finish()
+    }
+
     private fun loadBookFromUrl(pdfUrl: String) {
         Log.d(TAG, "loadBookFromUrl: Get Pdf from firebase storage using URL")
 
@@ -65,10 +73,7 @@ class PdfViewActivity : AppCompatActivity() {
                 Log.d(TAG, "loadBookFromUrl: pdf got from url")
 
                 binding.pdfView.fromBytes(bytes)
-                    .swipeHorizontal(true)//set false to scroll vertical, set true scroll horizontal
-                    .pageSnap(true)
-                    .autoSpacing(true)
-                    .pageFling(true)
+                    .swipeHorizontal(false)//set false to scroll vertical, set true scroll horizontal
                     .scrollHandle(DefaultScrollHandle(this))
                     .onPageChange {page, pageCount ->
                         val currentPage = page+1

@@ -80,6 +80,7 @@ class MyApplication: Application() {
                     pdfView.fromBytes(bytes)
                         .pages(0)
                         .spacing(0)
+                        .enableDoubletap(false)
                         .swipeHorizontal(false)
                         .enableSwipe(false)
                         .onError { t->
