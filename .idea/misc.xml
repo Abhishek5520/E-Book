@@ -17,10 +17,11 @@
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/edt_sh3.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/ic_attach_white.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/ic_baseline_lock_24.xml" value="0.1" />
+        <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/shaper_1.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/tab_background_selected.xml" value="0.11200000000000002" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/tab_background_unselected.xml" value="0.1" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/drawable/tab_selector.xml" value="0.1" />
-        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_category_add.xml" value="0.2" />
+        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_category_add.xml" value="0.10648148148148148" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_dash_board_admin.xml" value="0.2" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_dash_board_user.xml" value="0.2" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_login.xml" value="0.2" />
@@ -30,7 +31,8 @@
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_pdf_edit.xml" value="0.2" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_pdf_list_admin.xml" value="0.2" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_pdf_view.xml" value="0.2" />
-        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_profile.xml" value="0.16799999999999998" />
+        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_profile.xml" value="0.264" />
+        <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_profile_edit.xml" value="0.2" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_register.xml" value="0.2" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/activity_splash.xml" value="0.16" />
         <entry key="..\:/App Projects/EBook/app/src/main/res/layout/fragment_books_user.xml" value="0.2" />

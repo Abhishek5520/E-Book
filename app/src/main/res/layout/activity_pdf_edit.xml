@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bc5"
+    android:background="@drawable/bc"
     tools:context=".activities.PdfEditActivity">
 
     <RelativeLayout
@@ -125,20 +125,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/descriptionTil"
+            android:layout_centerVertical="true"
             android:layout_marginTop="5dp"
             android:background="@drawable/edt_sh1"
             android:drawableStart="@drawable/ic_category_gray"
             android:drawableEnd="@drawable/ic_down_gray"
             android:drawablePadding="10dp"
             android:hint="Book Category"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
             android:paddingLeft="15dp"
+            android:paddingTop="10dp"
             android:paddingRight="10dp"
-            android:textColorHint="@color/gray1"
+            android:paddingBottom="10dp"
             android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_centerVertical="true"/>
+            android:textColorHint="@color/gray1"
+            android:textSize="16sp" />
     </RelativeLayout>
 
     <androidx.appcompat.widget.AppCompatButton

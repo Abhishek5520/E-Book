@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -42,6 +43,10 @@ class DashBoardUserActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             Animatoo.animateSlideRight(this)
             finish()
+        }
+        binding.profileBtn.setOnClickListener {
+            startActivity(Intent(this,ProfileActivity::class.java))
+            Animatoo.animateSlideDown(this)
         }
     }
 
@@ -147,9 +152,16 @@ class DashBoardUserActivity : AppCompatActivity() {
         val firebaseUser = firebaseAuth.currentUser
         if (firebaseUser == null){
             binding.subTitleTv.text = "Not Logged In"
+
+            binding.profileBtn.visibility = View.GONE
+            binding.logoutBtn.visibility = View.GONE
         }
         else{
             val email = firebaseUser.email
+
+            binding.profileBtn.visibility = View.VISIBLE
+            binding.logoutBtn.visibility = View.VISIBLE
+
             val uid = firebaseUser.uid
 
             val ref = FirebaseDatabase.getInstance().getReference("Users")
