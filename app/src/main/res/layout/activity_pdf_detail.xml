@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bc7"
+    android:background="@drawable/bc11"
     tools:context=".activities.PdfDetailActivity">
 
     <RelativeLayout
@@ -253,6 +253,45 @@
                 android:layout_marginTop="5dp"
                 android:text="The description of the book.."
                 android:textColor="@color/black"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/gray3"
+                android:layout_marginTop="5dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Comments"
+                    android:layout_marginTop="7dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    />
+
+                <ImageButton
+                    android:id="@+id/addCommentBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:padding="10dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_add_comment_black"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/commentsRv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/addCommentBtn"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/row_comment"
+                    />
+
+            </RelativeLayout>
 
         </LinearLayout>
 
