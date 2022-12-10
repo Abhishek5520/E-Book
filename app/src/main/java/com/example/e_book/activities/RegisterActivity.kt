@@ -35,7 +35,6 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.backBtn.setOnClickListener {
             onBackPressed()
-            Animatoo.animateSlideRight(this)
         }
 
         binding.registerBtn.setOnClickListener {
@@ -97,7 +96,6 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity(Intent(this, LoginActivity::class.java))
         Animatoo.animateSlideRight(this)
         finish()
 

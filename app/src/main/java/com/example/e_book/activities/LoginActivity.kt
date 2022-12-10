@@ -39,11 +39,15 @@ class LoginActivity : AppCompatActivity() {
         binding.noAccountTv.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
             Animatoo.animateSlideLeft(this@LoginActivity)
-            finish()
         }
 
         binding.loginBtn.setOnClickListener {
             validateData()
+        }
+
+        binding.forgotTv.setOnClickListener {
+            startActivity(Intent(this, ForgotPasswordMainActivity::class.java))
+            Animatoo.animateSlideLeft(this)
         }
     }
 
