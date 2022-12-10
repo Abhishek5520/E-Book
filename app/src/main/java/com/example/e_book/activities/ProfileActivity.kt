@@ -7,7 +7,9 @@ import com.blogspot.atifsoftwares.animatoolib.Animatoo
 import com.bumptech.glide.Glide
 import com.example.e_book.MyApplication
 import com.example.e_book.R
+import com.example.e_book.adapters.AdapterPdfFavorite
 import com.example.e_book.databinding.ActivityProfileBinding
+import com.example.e_book.models.ModelPdf
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -20,6 +22,9 @@ class ProfileActivity : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
 
+    private lateinit var booksArrayList: ArrayList<ModelPdf>
+    private lateinit var adapterPdfFavorite: AdapterPdfFavorite
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileBinding.inflate(layoutInflater)
@@ -27,6 +32,7 @@ class ProfileActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         loadUserInfo()
+        loadFavoriteBooks()
 
         binding.backBtn.setOnClickListener {
             onBackPressed()
@@ -73,6 +79,37 @@ class ProfileActivity : AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
+    }
+
+    private fun loadFavoriteBooks(){
+
+        booksArrayList = ArrayList()
+
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
+        ref.child(firebaseAuth.uid!!).child("Favorites")
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    booksArrayList.clear()
+                    for (ds in snapshot.children){
+                        val bookId = "${ds.child("bookId").value}"
+
+                        val modelPdf = ModelPdf()
+                        modelPdf.id = bookId
+
+                        booksArrayList.add(modelPdf)
+                    }
+
+                    binding.favoriteBookCountTv.text = "${booksArrayList.size}"
+                    adapterPdfFavorite = AdapterPdfFavorite(this@ProfileActivity, booksArrayList)
+                    binding.favoriteRv.adapter = adapterPdfFavorite
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+
+                }
+            })
+
     }
 
     override fun onBackPressed() {

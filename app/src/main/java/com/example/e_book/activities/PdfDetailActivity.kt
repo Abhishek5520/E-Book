@@ -49,9 +49,7 @@ class PdfDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
-        if (firebaseAuth.currentUser != null){
-            checkIsFavorite()
-        }
+
 
         bookId = intent.getStringExtra("bookId")!!
 
@@ -96,7 +94,6 @@ class PdfDetailActivity : AppCompatActivity() {
                 else{
                     addToFavorite()
                 }
-                checkIsFavorite()
             }
         }
     }
@@ -114,11 +111,11 @@ class PdfDetailActivity : AppCompatActivity() {
     }
 
     private fun checkIsFavorite(){
-        Log.d(TAG, "checkIsFavorite: Checking if book iss in fav or not")
+        Log.d(TAG, "checkIsFavorite: Checking if book is in fav or not")
 
         val ref = FirebaseDatabase.getInstance().getReference("Users")
         ref.child(firebaseAuth.uid!!).child("Favorites").child(bookId)
-            .addListenerForSingleValueEvent(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     isInMyFavorite = snapshot.exists()
 
@@ -281,6 +278,10 @@ class PdfDetailActivity : AppCompatActivity() {
     }
 
     private fun loadBookDetails() {
+
+        if (firebaseAuth.currentUser != null){
+            checkIsFavorite()
+        }
 
         val ref = FirebaseDatabase.getInstance().getReference("Books")
             .ref.child(bookId)

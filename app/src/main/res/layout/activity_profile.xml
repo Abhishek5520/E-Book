@@ -56,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="210dp"
-        android:background="@drawable/shaper_1"/>
+        android:background="@drawable/shaper_1" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/profileIv"
@@ -173,5 +173,33 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/detailsLl"
+        android:background="@color/gray3"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:id="@+id/favoritesLabelTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view1"
+        android:padding="5dp"
+        android:paddingStart="15dp"
+        android:text="Favorite Books"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favoriteRv"
+        android:layout_below="@id/favoritesLabelTv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/row_pdf_favorite"
+        />
 
 </RelativeLayout>

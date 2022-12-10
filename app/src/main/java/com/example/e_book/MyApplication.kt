@@ -9,7 +9,9 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import com.example.e_book.activities.PdfDetailActivity
 import com.github.barteksc.pdfviewer.PDFView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -104,6 +106,26 @@ class MyApplication: Application() {
                 }
                 .addOnFailureListener { e ->
                     Log.d(TAG, "LoadPdfSize: Failed to get metadata due to ${e.message}")
+                }
+        }
+
+        fun removeFromFavorite(context: Context, bookId: String){
+            val TAG = "REMOVE_FAV_TAG"
+            Log.d(TAG, "removeFromFavorite: Removing from favorite")
+
+            val firebaseAuth = FirebaseAuth.getInstance()
+
+            val ref = FirebaseDatabase.getInstance().getReference("Users")
+            ref.child(firebaseAuth.uid!!).child("Favorites").child(bookId)
+                .removeValue()
+                .addOnSuccessListener {
+                    Log.d(TAG, "removeFromFavorite: Removed from favorite")
+                    Toast.makeText(context,"Removed from favorite", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener { e->
+                    Log.d(TAG, "removeFromFavorite: Failed to remove from favorite due to ${e.message}")
+                    Toast.makeText(context,"Failed to remove from favorite due to ${e.message}", Toast.LENGTH_SHORT).show()
+
                 }
         }
 
