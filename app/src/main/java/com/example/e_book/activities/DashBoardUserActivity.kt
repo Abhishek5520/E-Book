@@ -23,10 +23,11 @@ class DashBoardUserActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashBoardUserBinding
 
+    private lateinit var firebaseAuth: FirebaseAuth
+
     private lateinit var categoryArrayList: ArrayList<ModelCategory>
     private lateinit var viewPagerAdapter: ViewPagerAdapter
 
-    private lateinit var firebaseAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashBoardUserBinding.inflate(layoutInflater)
@@ -62,6 +63,7 @@ class DashBoardUserActivity : AppCompatActivity() {
         val ref = FirebaseDatabase.getInstance().getReference("Categories")
         ref.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+
                 categoryArrayList.clear()
 
                 val modelAll = ModelCategory("01","All",1,"")
@@ -113,7 +115,7 @@ class DashBoardUserActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+
             }
         })
 
@@ -121,7 +123,8 @@ class DashBoardUserActivity : AppCompatActivity() {
     }
 
     class ViewPagerAdapter(fm: FragmentManager, behavior: Int, context: Context): FragmentPagerAdapter(fm, behavior){
-        private val fragmentList: ArrayList<BooksUserFragment> = ArrayList()
+
+        private val fragmentsList: ArrayList<BooksUserFragment> = ArrayList()
         private val fragmentTitleList: ArrayList<String> = ArrayList()
 
         private val context: Context
@@ -130,19 +133,19 @@ class DashBoardUserActivity : AppCompatActivity() {
             this.context = context
         }
         override fun getCount(): Int {
-            return  fragmentList.size
+            return  fragmentsList.size
         }
 
         override fun getItem(position: Int): Fragment {
-            return fragmentList[position]
+            return fragmentsList[position]
         }
 
-        override fun getPageTitle(position: Int): CharSequence? {
+        override fun getPageTitle(position: Int): CharSequence {
             return fragmentTitleList[position]
         }
 
         public fun addFragment(fragment: BooksUserFragment, title: String){
-            fragmentList.add(fragment)
+            fragmentsList.add(fragment)
 
             fragmentTitleList.add(title)
         }
@@ -166,7 +169,7 @@ class DashBoardUserActivity : AppCompatActivity() {
 
             val ref = FirebaseDatabase.getInstance().getReference("Users")
             ref.child(uid)
-                .addListenerForSingleValueEvent(object : ValueEventListener{
+                .addValueEventListener(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val name = snapshot.child("name").value
                         binding.titleTv.text = name.toString()

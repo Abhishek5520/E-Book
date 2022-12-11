@@ -21,7 +21,7 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filter
 
     public var pdfArrayList: ArrayList<ModelPdf>
 
-    public var filterList: ArrayList<ModelPdf>
+    private var filterList: ArrayList<ModelPdf>
 
     private lateinit var binding: RowPdfUserBinding
 

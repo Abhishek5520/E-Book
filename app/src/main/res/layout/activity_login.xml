@@ -36,17 +36,11 @@
 
     </RelativeLayout>
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginTop="230dp"
-        android:layout_marginBottom="60dp"
-        >
-
         <RelativeLayout
+            android:id="@+id/midTv"
+            android:layout_marginTop="230dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -123,7 +117,7 @@
 
                 />
         </RelativeLayout>
-    </ScrollView>
+
 
     <TextView
         android:id="@+id/noAccountTv"

@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.example.e_book.BooksUserFragment
 import com.example.e_book.adapters.AdapterCategory
 import com.example.e_book.databinding.ActivityDashBoardAdminBinding
 import com.example.e_book.models.ModelCategory

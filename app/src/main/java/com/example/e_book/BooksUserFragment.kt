@@ -35,7 +35,6 @@ class BooksUserFragment : Fragment {
             fragment.arguments = args
             return fragment
         }
-
     }
 
     private var categoryId = ""
@@ -101,7 +100,7 @@ class BooksUserFragment : Fragment {
     private fun loadAllBooks() {
         pdfArrayList = ArrayList()
         val ref = FirebaseDatabase.getInstance().getReference("Books")
-        ref.addListenerForSingleValueEvent(object : ValueEventListener{
+        ref.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 pdfArrayList.clear()
                 for (ds in snapshot.children){
@@ -124,7 +123,7 @@ class BooksUserFragment : Fragment {
         pdfArrayList = ArrayList()
         val ref = FirebaseDatabase.getInstance().getReference("Books")
         ref.orderByChild(orderBy).limitToLast(10) // load 10 most viewed or downloaded books
-            .addListenerForSingleValueEvent(object : ValueEventListener{
+            .addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 pdfArrayList.clear()
                 for (ds in snapshot.children){
@@ -146,7 +145,8 @@ class BooksUserFragment : Fragment {
     private fun loadCategorizedBooks() {
         pdfArrayList = ArrayList()
         val ref = FirebaseDatabase.getInstance().getReference("Books")
-        ref.orderByChild("categoryId").equalTo(categoryId).addListenerForSingleValueEvent(object : ValueEventListener{
+        ref.orderByChild("categoryId").equalTo(categoryId)
+            .addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 pdfArrayList.clear()
                 for (ds in snapshot.children){

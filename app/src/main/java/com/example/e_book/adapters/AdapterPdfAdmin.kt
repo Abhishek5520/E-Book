@@ -22,6 +22,7 @@ class AdapterPdfAdmin : RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fi
     private var context: Context
 
     public var pdfArrayList: ArrayList<ModelPdf>
+
     private val filterList: ArrayList<ModelPdf>
 
     private lateinit var binding: RoePdfAdminBinding

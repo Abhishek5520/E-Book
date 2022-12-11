@@ -59,9 +59,16 @@ class AdapterComment: RecyclerView.Adapter<AdapterComment.HolderComment> {
         holder.commentTv.text = comment
         holder.dateTv.text = date
 
+        if (firebaseAuth.currentUser != null && firebaseAuth.uid == uid){
+            holder.deleteBtn.visibility = View.VISIBLE
+        }
+        else{
+            holder.deleteBtn.visibility = View.GONE
+        }
+
         loadUserDetails(model,holder)
 
-        holder.itemView.setOnClickListener {
+        holder.deleteBtn.setOnClickListener {
 
             if (firebaseAuth.currentUser != null && firebaseAuth.uid == uid){
                 deleteCommentDialog(model,holder)
@@ -107,6 +114,7 @@ class AdapterComment: RecyclerView.Adapter<AdapterComment.HolderComment> {
                     val name = "${snapshot.child("name").value}"
                     val profileImage = "${snapshot.child("profileImage").value}"
 
+
                     holder.nameTv.text = name
                     try {
                         Glide.with(context)
@@ -137,6 +145,7 @@ class AdapterComment: RecyclerView.Adapter<AdapterComment.HolderComment> {
         val nameTv = binding.nameTv
         val dateTv = binding.dateTv
         val commentTv = binding.commentTv
+        val deleteBtn = binding.deleteBtn
 
     }
 

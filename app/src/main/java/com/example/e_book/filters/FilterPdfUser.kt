@@ -22,7 +22,7 @@ class FilterPdfUser: Filter {
 
         if (constraint != null && constraint.isNotEmpty()){
             constraint = constraint.toString().uppercase()
-            val filteredModels = ArrayList<ModelPdf>()
+            var filteredModels = ArrayList<ModelPdf>()
             for (i in filterList.indices){
 
                 if (filterList[i].title.uppercase().contains(constraint)){

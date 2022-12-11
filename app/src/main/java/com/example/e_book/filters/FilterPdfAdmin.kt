@@ -18,6 +18,7 @@ class FilterPdfAdmin: Filter {
     override fun performFiltering(constraint: CharSequence?): FilterResults {
         var constraint: CharSequence? = constraint
         val results = FilterResults()
+
         if (constraint != null && constraint.isNotEmpty()){
             constraint = constraint.toString().lowercase()
             var filteredModels = ArrayList<ModelPdf>()
