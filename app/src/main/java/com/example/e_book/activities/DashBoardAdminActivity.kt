@@ -7,7 +7,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.bumptech.glide.Glide
 import com.example.e_book.BooksUserFragment
+import com.example.e_book.R
 import com.example.e_book.adapters.AdapterCategory
 import com.example.e_book.databinding.ActivityDashBoardAdminBinding
 import com.example.e_book.models.ModelCategory
@@ -125,6 +127,18 @@ class DashBoardAdminActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val name = snapshot.child("name").value
                         binding.titleTv.text = name.toString()
+                        val profileImage = "${snapshot.child("profileImage").value}"
+
+                        try {
+                            Glide.with(this@DashBoardAdminActivity)
+                                .load(profileImage)
+                                .placeholder(R.drawable.ic_person_white)
+                                .into(binding.profileBtn)
+                        }
+                        catch (e:Exception){
+
+                        }
+
                     }
 
                     override fun onCancelled(error: DatabaseError) {

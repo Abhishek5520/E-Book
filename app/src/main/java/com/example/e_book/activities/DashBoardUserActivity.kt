@@ -10,7 +10,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
+import com.bumptech.glide.Glide
 import com.example.e_book.BooksUserFragment
+import com.example.e_book.R
 import com.example.e_book.databinding.ActivityDashBoardUserBinding
 import com.example.e_book.models.ModelCategory
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +20,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.lang.Exception
 
 class DashBoardUserActivity : AppCompatActivity() {
 
@@ -173,6 +176,18 @@ class DashBoardUserActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val name = snapshot.child("name").value
                         binding.titleTv.text = name.toString()
+
+                        val profileImage = "${snapshot.child("profileImage").value}"
+
+                        try {
+                            Glide.with(this@DashBoardUserActivity)
+                                .load(profileImage)
+                                .placeholder(R.drawable.ic_person_white)
+                                .into(binding.profileBtn)
+                        }
+                        catch (e: Exception){
+
+                        }
                     }
 
                     override fun onCancelled(error: DatabaseError) {
