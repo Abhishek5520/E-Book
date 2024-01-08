@@ -164,7 +164,6 @@ class ProfileEditActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         Animatoo.animateSlideRight(this)
-        finish()
     }
 
     private fun showImageAttachMenu(){

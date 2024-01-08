@@ -38,7 +38,6 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.registerBtn.setOnClickListener {
-
             validateData()
         }
 
@@ -97,7 +96,6 @@ class RegisterActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         Animatoo.animateSlideRight(this)
-        finish()
 
     }
 

@@ -171,11 +171,9 @@ class DashBoardUserActivity : AppCompatActivity() {
             val uid = firebaseUser.uid
 
             val ref = FirebaseDatabase.getInstance().getReference("Users")
-            ref.child(uid)
+            ref.child(firebaseAuth.uid!!)
                 .addValueEventListener(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        val name = snapshot.child("name").value
-                        binding.titleTv.text = name.toString()
 
                         val profileImage = "${snapshot.child("profileImage").value}"
 

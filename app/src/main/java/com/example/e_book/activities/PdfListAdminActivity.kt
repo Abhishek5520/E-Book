@@ -72,7 +72,6 @@ class PdfListAdminActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         Animatoo.animateSlideRight(this)
-        finish()
     }
 
     private fun loadPdfList() {

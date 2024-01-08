@@ -125,8 +125,7 @@ class DashBoardAdminActivity : AppCompatActivity() {
             ref.child(uid)
                 .addListenerForSingleValueEvent(object : ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        val name = snapshot.child("name").value
-                        binding.titleTv.text = name.toString()
+
                         val profileImage = "${snapshot.child("profileImage").value}"
 
                         try {

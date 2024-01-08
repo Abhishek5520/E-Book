@@ -62,7 +62,6 @@ class PdfEditActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finish()
         Animatoo.animateSlideRight(this)
 
     }

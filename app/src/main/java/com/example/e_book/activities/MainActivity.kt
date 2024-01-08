@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(Intent(this, DashBoardUserActivity::class.java))
             Animatoo.animateFade(this)
-            finish()
         }
 
     }

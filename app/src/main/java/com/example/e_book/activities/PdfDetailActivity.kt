@@ -379,7 +379,6 @@ class PdfDetailActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         Animatoo.animateSlideDown(this)
-        finish()
     }
 
     private fun loadBookDetails() {

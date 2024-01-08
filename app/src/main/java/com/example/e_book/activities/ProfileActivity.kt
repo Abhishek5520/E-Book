@@ -179,6 +179,5 @@ class ProfileActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         Animatoo.animateSlideUp(this)
-        finish()
     }
 }

@@ -61,7 +61,6 @@ class PdfViewActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         Animatoo.animateSlideRight(this)
-        finish()
     }
 
     private fun loadBookFromUrl(pdfUrl: String) {
